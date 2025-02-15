@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Person {
 
     @Id
-    @Column(name = "personid") // Primary Key
+    @Column(name = "personid")
     private int personId;
 
     @Column(name = "name")
@@ -16,13 +16,16 @@ public class Person {
     @Column(name = "age")
     private int age;
 
-@Column(length = 255)
-private String email;
-
+    @Column(length = 255)
+    private String email;
 
     @OneToOne
     @JoinColumn(name = "personid")  // Foreign Key reference in Address table
     private Address address;
+
+    // Uncomment below to make it bidirectional
+    // @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
+    // private Address address;
 
     // Getters and Setters
     public int getPersonId() {
@@ -63,5 +66,8 @@ private String email;
 
     public void setAddress(Address address) {
         this.address = address;
+
+        // Uncomment below to maintain bidirectional consistency
+        // address.setPerson(this);
     }
 }
