@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @Column(name = "personid")  // Mapping primary key to the table column
+    @Column(name = "personid")
     private int personId;
 
-    @Column(name = "h_no")  // Mapping to "h_no" column in the database
+    @Column(name = "h_no")
     private String hNo;
 
     @Column(name = "city")
@@ -22,7 +22,13 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    // Getter and Setter for personId
+    // Uncomment below to make it bidirectional
+    // @OneToOne
+    // @MapsId
+    // @JoinColumn(name = "personid")
+    // private Person person;
+
+    // Getters and Setters
     public int getPersonId() {
         return personId;
     }
@@ -31,8 +37,7 @@ public class Address {
         this.personId = personId;
     }
 
-    // Getter and Setter for hNo
-    public String getHNo() {  // Ensure this matches Hibernate's expected convention
+    public String getHNo() {
         return hNo;
     }
 
@@ -40,7 +45,6 @@ public class Address {
         this.hNo = hNo;
     }
 
-    // Getter and Setter for city
     public String getCity() {
         return city;
     }
@@ -49,7 +53,6 @@ public class Address {
         this.city = city;
     }
 
-    // Getter and Setter for state
     public String getState() {
         return state;
     }
@@ -58,7 +61,6 @@ public class Address {
         this.state = state;
     }
 
-    // Getter and Setter for country
     public String getCountry() {
         return country;
     }
@@ -66,4 +68,13 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    // Uncomment below to make it bidirectional
+    // public Person getPerson() {
+    //     return person;
+    // }
+
+    // public void setPerson(Person person) {
+    //     this.person = person;
+    // }
 }
